@@ -5,7 +5,7 @@ export class CreateDeveloperDto {
     name: string;
 
     @IsEmail()
-    esmail: string;
+    email: string;
 
     @IsDateString()
     dateOfBirth: string;
