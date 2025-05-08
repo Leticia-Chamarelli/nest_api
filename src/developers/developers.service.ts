@@ -11,22 +11,28 @@ export class DevelopersService {
   ) {}
 
   create(dto: CreateDeveloperDto) {
-    return 'This action adds a new developer';
+    const developer = this.repository.create(dto);
+    return this.repository.save(developer);
   }
 
   findAll() {
-    return `This action returns all developers`;
+    return this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} developer`;
+  findOne(id: string) {
+    return this.repository.findOneBy({ id });
   }
 
-  update(id: number, dto: UpdateDeveloperDto) {
-    return `This action updates a #${id} developer`;
+  async update(id: string, dto: UpdateDeveloperDto) {
+    const developer = await this.repository.findOneBy({ id });
+    if (!developer) return null;
+    this.repository.merge(developer, dto);
+    return this.repository.save(developer);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} developer`;
+  async remove(id: string) {
+    const developer = await this.repository.findOneBy({ id });
+    if (!developer) return null;
+    return this.repository.remove(developer);
   }
 }
