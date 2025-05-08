@@ -8,6 +8,13 @@ GET http://localhost:3000/developers/1
 
 ### create developer
 POST http://localhost:3000/developers
+Content-Type: application/json
+
+{
+    "name": "John",
+    "email": "john@email.com",
+    "dateOfBirth": "1991-05-03"
+}
 
 
 ### update developer
