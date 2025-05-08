@@ -11,9 +11,9 @@ POST http://localhost:3000/developers
 Content-Type: application/json
 
 {
-    "name": "John",
-    "email": "john@email.com",
-    "dateOfBirth": "1991-05-03"
+    "name": "Reymond",
+    "email": "reymond@email.com",
+    "dateOfBirth": "1988-09-02"
 }
 
 

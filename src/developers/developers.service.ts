@@ -3,10 +3,12 @@ import { CreateDeveloperDto } from './dto/create-developer.dto';
 import { UpdateDeveloperDto } from './dto/update-developer.dto';
 import { Repository } from 'typeorm';
 import { Developer } from './entities/developer.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class DevelopersService {
   constructor(
+    @InjectRepository(Developer)
     private readonly repository: Repository<Developer>
   ) {}
 
@@ -33,6 +35,6 @@ export class DevelopersService {
   async remove(id: string) {
     const developer = await this.repository.findOneBy({ id });
     if (!developer) return null;
-    return this.repository.remove(developer);
+    return this.repository.save(developer);
   }
 }
