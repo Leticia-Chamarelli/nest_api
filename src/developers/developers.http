@@ -19,7 +19,11 @@ Content-Type: application/json
 
 ### update developer
 PATCH  http://localhost:3000/developers/1
+Content-Type: application/json
 
+{
+    "email": "johnd@email.com"
+}
 
 ### delete developer
 DELETE  http://localhost:3000/developers/1
